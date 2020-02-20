@@ -1,0 +1,26 @@
+<resources>
+    <string name="app_name">Richiesta Vendor</string>
+    <string name="orders">Orders</string>
+    <string name="products">Products</string>
+    <string name="branches">Branches</string>
+    <string name="users">Users</string>
+    <string name="settings">Settings</string>
+    <string name="loading">Loading</string>
+    <string name="button_ok">OK</string>
+    <string name="internet_connection_failed">Internet connection failed</string>
+    <string name="no_products">There are no products</string>
+    <string name="no_branches">There are no branches</string>
+    <string name="sub_sections">Sub Sections</string>
+    <string name="no_SubSections">There are no Subsections</string>
+    <string name="arabic_name">Arabic name</string>
+    <string name="english_name">English name</string>
+    <string name="french_name">French name</string>
+    <string name="arabic_summary">Arabic summary</string>
+    <string name="en_summary">English summary</string>
+    <string name="french_summary">French summary</string>
+    <string name="arabic_details">Arabic details</string>
+    <string name="en_details">English details</string>
+    <string name="french_details">French details</string>
+    <string name="save">Save</string>
+    <string name="add_product">Add product</string>
+</resources>
