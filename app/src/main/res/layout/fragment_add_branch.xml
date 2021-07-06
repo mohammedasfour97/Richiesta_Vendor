@@ -1,0 +1,141 @@
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@color/white"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <androidx.appcompat.widget.Toolbar
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorPrimary"
+            app:title="@string/add_branch" />
+
+        <EditText
+            android:id="@+id/ar_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/arabic_name"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/e_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/english_name"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/field"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/field"
+            android:padding="@dimen/_10sdp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <Spinner
+                android:id="@+id/country"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/white_solid_prim_stroke"
+                android:layout_margin="@dimen/_10sdp"/>
+
+            <Spinner
+                android:id="@+id/city"
+                android:layout_width="@dimen/_100sdp"
+                android:layout_height="@dimen/_30sdp"
+                android:background="@drawable/white_solid_prim_stroke"
+                android:layout_margin="@dimen/_10sdp"/>
+
+        </LinearLayout>
+
+
+        <EditText
+            android:id="@+id/branch_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:gravity="start"
+            android:hint="@string/branch_notes"
+            android:lines="3"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/bra_address"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/phone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/bra_phone"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/cell"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/bra_cell"
+            android:padding="@dimen/_10sdp" />
+
+        <EditText
+            android:id="@+id/email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:hint="@string/bra_aemail"
+            android:padding="@dimen/_10sdp" />
+
+
+        <EditText
+            android:id="@+id/stores_notes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="@dimen/_10sdp"
+            android:background="@drawable/white_solid_prim_stroke"
+            android:gravity="start"
+            android:hint="@string/store_notes"
+            android:lines="3"
+            android:padding="@dimen/_10sdp" />
+
+
+        <Button
+            android:id="@+id/save"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:layout_margin="@dimen/_20sdp"
+            android:background="@drawable/prim_solid"
+            android:padding="@dimen/_10sdp"
+            android:text="@string/save"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_13sdp" />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

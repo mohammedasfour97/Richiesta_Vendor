@@ -1,132 +1,144 @@
 package com.richiestavendor.ModelClasses;
 
-public class Product {
+import java.io.Serializable;
 
-    private String ID, ID_Stores, ID_Branches, ID_SubSections, CPName, ARName, ENName, FRName, ARSummary, ENSummary, FRSummary, ARDetails,
-            ENDetails, FRDetails, ARUse, ENUse, FRUse, ARImage, ENImage, FRImage, Code, Status, sales, Views, Searches, Comments, Ratings, AvgRating,
-            Notes, Ranking, ID_USER, DateEdite, DateCreate;
+public class Product implements Serializable {
+
+    private String id , RKPrdNameEN, RKPrdNameAR, RKPrdDescrEN, RKPrdDescrAR, RKBranches_Id, ProductNumber, ProductUPC, PurchaseUnitPrice,
+            SalesUnitPrice, ProductPic, FRSummary, ARDetails, RK_Categories, RK_Size, RK_Colors, RK_Additins,  IsAvailable, RK_Notes,
+            CreatedBy, CreatedDate, ModifiedBy, ModifiedDate , MeasurmentUnit , MeasurmentUnitAr, ColorPrice, AdditionalPrice , SizePrice;
 
     public Product() {
     }
 
-    public Product(String ID, String ID_Stores, String ID_Branches, String ID_SubSections, String CPName, String ARName, String ENName, String FRName,
-                   String ARSummary, String ENSummary, String FRSummary, String ARDetails, String ENDetails, String FRDetails, String ARUse,
-                   String ENUse, String FRUse, String ARImage, String ENImage, String FRImage, String code, String status, String sales, String views,
-                   String searches, String comments, String ratings, String avgRating, String notes, String ranking, String ID_USER, String dateEdite,
-                   String dateCreate) {
-        this.ID = ID;
-        this.ID_Stores = ID_Stores;
-        this.ID_Branches = ID_Branches;
-        this.ID_SubSections = ID_SubSections;
-        this.CPName = CPName;
-        this.ARName = ARName;
-        this.ENName = ENName;
-        this.FRName = FRName;
-        this.ARSummary = ARSummary;
-        this.ENSummary = ENSummary;
+    public Product(String RKPrdNameEN, String RKPrdNameAR, String RKPrdDescrEN, String RKPrdDescrAR, String RKBranches_Id,
+                   String productNumber, String productUPC, String purchaseUnitPrice, String salesUnitPrice, String productPic,
+                   String RK_Categories, String RK_Size, String RK_Colors, String RK_Additins,
+                   String isAvailable, String RK_Notes, String createdBy, String createdDate, String modifiedBy, String modifiedDate,
+                   String measurmentUnit, String measurmentUnitAr, String colorPrice, String additionalPrice, String sizePrice) {
+        this.RKPrdNameEN = RKPrdNameEN;
+        this.RKPrdNameAR = RKPrdNameAR;
+        this.RKPrdDescrEN = RKPrdDescrEN;
+        this.RKPrdDescrAR = RKPrdDescrAR;
+        this.RKBranches_Id = RKBranches_Id;
+        ProductNumber = productNumber;
+        ProductUPC = productUPC;
+        PurchaseUnitPrice = purchaseUnitPrice;
+        SalesUnitPrice = salesUnitPrice;
+        ProductPic = productPic;
         this.FRSummary = FRSummary;
         this.ARDetails = ARDetails;
-        this.ENDetails = ENDetails;
-        this.FRDetails = FRDetails;
-        this.ARUse = ARUse;
-        this.ENUse = ENUse;
-        this.FRUse = FRUse;
-        this.ARImage = ARImage;
-        this.ENImage = ENImage;
-        this.FRImage = FRImage;
-        Code = code;
-        Status = status;
-        this.sales = sales;
-        Views = views;
-        Searches = searches;
-        Comments = comments;
-        Ratings = ratings;
-        AvgRating = avgRating;
-        Notes = notes;
-        Ranking = ranking;
-        this.ID_USER = ID_USER;
-        DateEdite = dateEdite;
-        DateCreate = dateCreate;
+        this.RK_Categories = RK_Categories;
+        this.RK_Size = RK_Size;
+        this.RK_Colors = RK_Colors;
+        this.RK_Additins = RK_Additins;
+        IsAvailable = isAvailable;
+        this.RK_Notes = RK_Notes;
+        CreatedBy = createdBy;
+        CreatedDate = createdDate;
+        ModifiedBy = modifiedBy;
+        ModifiedDate = modifiedDate;
+        MeasurmentUnit = measurmentUnit;
+        MeasurmentUnitAr = measurmentUnitAr;
+        ColorPrice = colorPrice;
+        AdditionalPrice = additionalPrice;
+        SizePrice = sizePrice;
     }
 
-    public String getID() {
-        return ID;
+    public String getId() {
+        return id;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setId(String id) {
+        this.id = id;
     }
 
-    public String getID_Stores() {
-        return ID_Stores;
+    public String getRK_Additins() {
+        return RK_Additins;
     }
 
-    public void setID_Stores(String ID_Stores) {
-        this.ID_Stores = ID_Stores;
+    public void setRK_Additins(String RK_Additins) {
+        this.RK_Additins = RK_Additins;
     }
 
-    public String getID_Branches() {
-        return ID_Branches;
+    public String getRKPrdNameEN() {
+        return RKPrdNameEN;
     }
 
-    public void setID_Branches(String ID_Branches) {
-        this.ID_Branches = ID_Branches;
+    public void setRKPrdNameEN(String RKPrdNameEN) {
+        this.RKPrdNameEN = RKPrdNameEN;
     }
 
-    public String getID_SubSections() {
-        return ID_SubSections;
+    public String getRKPrdNameAR() {
+        return RKPrdNameAR;
     }
 
-    public void setID_SubSections(String ID_SubSections) {
-        this.ID_SubSections = ID_SubSections;
+    public void setRKPrdNameAR(String RKPrdNameAR) {
+        this.RKPrdNameAR = RKPrdNameAR;
     }
 
-    public String getCPName() {
-        return CPName;
+    public String getRKPrdDescrEN() {
+        return RKPrdDescrEN;
     }
 
-    public void setCPName(String CPName) {
-        this.CPName = CPName;
+    public void setRKPrdDescrEN(String RKPrdDescrEN) {
+        this.RKPrdDescrEN = RKPrdDescrEN;
     }
 
-    public String getARName() {
-        return ARName;
+    public String getRKPrdDescrAR() {
+        return RKPrdDescrAR;
     }
 
-    public void setARName(String ARName) {
-        this.ARName = ARName;
+    public void setRKPrdDescrAR(String RKPrdDescrAR) {
+        this.RKPrdDescrAR = RKPrdDescrAR;
     }
 
-    public String getENName() {
-        return ENName;
+    public String getRKBranches_Id() {
+        return RKBranches_Id;
     }
 
-    public void setENName(String ENName) {
-        this.ENName = ENName;
+    public void setRKBranches_Id(String RKBranches_Id) {
+        this.RKBranches_Id = RKBranches_Id;
     }
 
-    public String getFRName() {
-        return FRName;
+    public String getProductNumber() {
+        return ProductNumber;
     }
 
-    public void setFRName(String FRName) {
-        this.FRName = FRName;
+    public void setProductNumber(String productNumber) {
+        ProductNumber = productNumber;
     }
 
-    public String getARSummary() {
-        return ARSummary;
+    public String getProductUPC() {
+        return ProductUPC;
     }
 
-    public void setARSummary(String ARSummary) {
-        this.ARSummary = ARSummary;
+    public void setProductUPC(String productUPC) {
+        ProductUPC = productUPC;
     }
 
-    public String getENSummary() {
-        return ENSummary;
+    public String getPurchaseUnitPrice() {
+        return PurchaseUnitPrice;
     }
 
-    public void setENSummary(String ENSummary) {
-        this.ENSummary = ENSummary;
+    public void setPurchaseUnitPrice(String purchaseUnitPrice) {
+        PurchaseUnitPrice = purchaseUnitPrice;
+    }
+
+    public String getSalesUnitPrice() {
+        return SalesUnitPrice;
+    }
+
+    public void setSalesUnitPrice(String salesUnitPrice) {
+        SalesUnitPrice = salesUnitPrice;
+    }
+
+    public String getProductPic() {
+        return ProductPic;
+    }
+
+    public void setProductPic(String productPic) {
+        ProductPic = productPic;
     }
 
     public String getFRSummary() {
@@ -145,171 +157,115 @@ public class Product {
         this.ARDetails = ARDetails;
     }
 
-    public String getENDetails() {
-        return ENDetails;
+    public String getRK_Categories() {
+        return RK_Categories;
     }
 
-    public void setENDetails(String ENDetails) {
-        this.ENDetails = ENDetails;
+    public void setRK_Categories(String RK_Categories) {
+        this.RK_Categories = RK_Categories;
     }
 
-    public String getFRDetails() {
-        return FRDetails;
+    public String getRK_Size() {
+        return RK_Size;
     }
 
-    public void setFRDetails(String FRDetails) {
-        this.FRDetails = FRDetails;
+    public void setRK_Size(String RK_Size) {
+        this.RK_Size = RK_Size;
     }
 
-    public String getARUse() {
-        return ARUse;
+    public String getRK_Colors() {
+        return RK_Colors;
     }
 
-    public void setARUse(String ARUse) {
-        this.ARUse = ARUse;
+    public void setRK_Colors(String RK_Colors) {
+        this.RK_Colors = RK_Colors;
     }
 
-    public String getENUse() {
-        return ENUse;
+    public String getIsAvailable() {
+        return IsAvailable;
     }
 
-    public void setENUse(String ENUse) {
-        this.ENUse = ENUse;
+    public void setIsAvailable(String isAvailable) {
+        IsAvailable = isAvailable;
     }
 
-    public String getFRUse() {
-        return FRUse;
+    public String getRK_Notes() {
+        return RK_Notes;
     }
 
-    public void setFRUse(String FRUse) {
-        this.FRUse = FRUse;
+    public void setRK_Notes(String RK_Notes) {
+        this.RK_Notes = RK_Notes;
     }
 
-    public String getARImage() {
-        return ARImage;
+    public String getCreatedBy() {
+        return CreatedBy;
     }
 
-    public void setARImage(String ARImage) {
-        this.ARImage = ARImage;
+    public void setCreatedBy(String createdBy) {
+        CreatedBy = createdBy;
     }
 
-    public String getENImage() {
-        return ENImage;
+    public String getCreatedDate() {
+        return CreatedDate;
     }
 
-    public void setENImage(String ENImage) {
-        this.ENImage = ENImage;
+    public void setCreatedDate(String createdDate) {
+        CreatedDate = createdDate;
     }
 
-    public String getFRImage() {
-        return FRImage;
+    public String getModifiedBy() {
+        return ModifiedBy;
     }
 
-    public void setFRImage(String FRImage) {
-        this.FRImage = FRImage;
+    public void setModifiedBy(String modifiedBy) {
+        ModifiedBy = modifiedBy;
     }
 
-    public String getCode() {
-        return Code;
+    public String getModifiedDate() {
+        return ModifiedDate;
     }
 
-    public void setCode(String code) {
-        Code = code;
+    public void setModifiedDate(String modifiedDate) {
+        ModifiedDate = modifiedDate;
     }
 
-    public String getStatus() {
-        return Status;
+    public String getMeasurmentUnit() {
+        return MeasurmentUnit;
     }
 
-    public void setStatus(String status) {
-        Status = status;
+    public void setMeasurmentUnit(String measurmentUnit) {
+        MeasurmentUnit = measurmentUnit;
     }
 
-    public String getSales() {
-        return sales;
+    public String getMeasurmentUnitAr() {
+        return MeasurmentUnitAr;
     }
 
-    public void setSales(String sales) {
-        this.sales = sales;
+    public void setMeasurmentUnitAr(String measurmentUnitAr) {
+        MeasurmentUnitAr = measurmentUnitAr;
     }
 
-    public String getViews() {
-        return Views;
+    public String getColorPrice() {
+        return ColorPrice;
     }
 
-    public void setViews(String views) {
-        Views = views;
+    public void setColorPrice(String colorPrice) {
+        ColorPrice = colorPrice;
     }
 
-    public String getSearches() {
-        return Searches;
+    public String getAdditionalPrice() {
+        return AdditionalPrice;
     }
 
-    public void setSearches(String searches) {
-        Searches = searches;
+    public void setAdditionalPrice(String additionalPrice) {
+        AdditionalPrice = additionalPrice;
     }
 
-    public String getComments() {
-        return Comments;
+    public String getSizePrice() {
+        return SizePrice;
     }
 
-    public void setComments(String comments) {
-        Comments = comments;
-    }
-
-    public String getRatings() {
-        return Ratings;
-    }
-
-    public void setRatings(String ratings) {
-        Ratings = ratings;
-    }
-
-    public String getAvgRating() {
-        return AvgRating;
-    }
-
-    public void setAvgRating(String avgRating) {
-        AvgRating = avgRating;
-    }
-
-    public String getNotes() {
-        return Notes;
-    }
-
-    public void setNotes(String notes) {
-        Notes = notes;
-    }
-
-    public String getRanking() {
-        return Ranking;
-    }
-
-    public void setRanking(String ranking) {
-        Ranking = ranking;
-    }
-
-    public String getID_USER() {
-        return ID_USER;
-    }
-
-    public void setID_USER(String ID_USER) {
-        this.ID_USER = ID_USER;
-    }
-
-    public String getDateEdite() {
-        return DateEdite;
-    }
-
-    public void setDateEdite(String dateEdite) {
-        DateEdite = dateEdite;
-    }
-
-    public String getDateCreate() {
-        return DateCreate;
-    }
-
-    public void setDateCreate(String dateCreate) {
-        DateCreate = dateCreate;
+    public void setSizePrice(String sizePrice) {
+        SizePrice = sizePrice;
     }
 }

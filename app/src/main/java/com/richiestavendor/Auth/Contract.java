@@ -1,6 +1,7 @@
 package com.richiestavendor.Auth;
 
 import java.util.HashMap;
+import java.util.List;
 
 public class Contract {
 
@@ -10,24 +11,23 @@ public class Contract {
 
             interface onFinishedListener{
 
-                void onFinished(HashMap<String , String> results);
+                void onFinished(List<HashMap<String , String>> results);
                 void onFailure(String error);
             }
-            void getCheckIfNumberIsExist(onFinishedListener onFinishedListener , String number);
+            void getLogin(onFinishedListener onFinishedListener , String number , String password);
         }
 
         interface Presenter{
 
-            void requestCheckIfNumberIsExist(String number);
+            void requestLogin(String number , String pass);
         }
 
         interface View{
 
-            void isExist();
-            void isNotExist();
+            void onViewAdmin(String store_id , String branch_id , String store_contact);
+            void onViewBranch(String branch_id , String store_id);
             void onFailure(String error);
             void onFailure(int error);
-
 
             void ShowProgress();
             void HideProgress();

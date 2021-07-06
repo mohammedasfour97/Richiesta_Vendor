@@ -2,7 +2,7 @@ package com.richiestavendor.Branches.View;
 
 import android.app.ProgressDialog;
 import android.content.Context;
-import android.graphics.Typeface;
+import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -17,16 +17,19 @@ import android.widget.Toast;
 import com.richiestavendor.BaseActivity;
 import com.richiestavendor.Branches.Contract;
 import com.richiestavendor.Branches.Presenter.BranchesPresenter;
+import com.richiestavendor.Constants;
 import com.richiestavendor.ModelClasses.Branch;
 import com.richiestavendor.R;
+import com.richiestavendor.View.ViewDetails;
 
 import java.util.ArrayList;
 import java.util.List;
 
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import uk.co.chrisjenx.calligraphy.CalligraphyContextWrapper;
 
 public class BranchesActivity extends BaseActivity implements Contract.Branches.View {
 
@@ -36,11 +39,6 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
     private List<Branch>BranchList;
     private ProgressDialog progressDialog;
     private BranchesPresenter BranchesPresenter;
-
-    @Override
-    protected void attachBaseContext(Context newBase) {
-        super.attachBaseContext(CalligraphyContextWrapper.wrap(newBase));
-    }
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -55,8 +53,7 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
 
         BranchesPresenter = new BranchesPresenter(this);
 
-        ShowProgress();
-        BranchesPresenter.requestBranches("1" , "0");
+        getBranches();
     }
 
     private void initUI(){
@@ -84,6 +81,14 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
         recyclerView.setNestedScrollingEnabled(false);
     }
 
+
+    public void getBranches(){
+
+        ShowProgress();
+        BranchesPresenter.requestBranches("0" );
+    }
+
+
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.add , menu);
@@ -93,6 +98,11 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
 
     @Override
     public boolean onOptionsItemSelected(MenuItem menuItem) {
+
+        FragmentManager fm = getSupportFragmentManager();
+
+        AddBranchFragment addBranchFragment = AddBranchFragment.newInstance();
+        addBranchFragment.show(fm, "fragment_new_activity");
 
         return super.onOptionsItemSelected(menuItem);
     }
@@ -105,6 +115,15 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
         BranchList.addAll(result);
 
         BranchesAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFinished() {
+
+        Toast.makeText(this, getResources().getString(R.string.succe_delete_bra) ,  Toast.LENGTH_SHORT).show();
+
+        ShowProgress();
+        BranchesPresenter.requestBranches("0" );
     }
 
     @Override
@@ -142,13 +161,15 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
         public class MyViewHolder extends RecyclerView.ViewHolder {
             Context context;
             private TextView title;
-            private ImageView imageView;
+            private ImageView info , delete , edit;
 
 
             public MyViewHolder(View view) {
                 super(view);
                 title = view.findViewById(R.id.title);
-                imageView = view.findViewById(R.id.image);
+                info = view.findViewById(R.id.info);
+                delete = view.findViewById(R.id.remove);
+                edit = view.findViewById(R.id.edit);
                 context = itemView.getContext();
 
 
@@ -174,9 +195,64 @@ public class BranchesActivity extends BaseActivity implements Contract.Branches.
 
             final Branch Branch = BranchList.get(position);
 
-            holder.title.setText(Branch.getARName());
+            holder.title.setText(Branch.getNameAR());
 
 
+            holder.info.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    FragmentManager fm = getSupportFragmentManager();
+
+                    ViewDetails b = null;
+                    try {
+                        b = new ViewDetails(Constants.toMap(Branch));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    b.show(fm, "fragment_new_activity");
+
+                }
+            });
+
+            holder.delete.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(BranchesActivity.this , R.style.MyAlertDialogStyle);
+                    builder.setMessage(getResources().getString(R.string.sure_delete_bra));
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            ShowProgress();
+
+                            BranchesPresenter.requestDeleteBranch(Branch.getRK_Branch_ID() , Branch.getRKBranchDetails_ID());
+                        }
+                    });
+                    builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+                }
+            });
+
+            holder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    FragmentManager fm = getSupportFragmentManager();
+
+                    AddBranchFragment addBranchFragment = new AddBranchFragment(Branch);
+                    addBranchFragment.show(fm, "fragment_new_activity");
+                }
+            });
         }
 
         @Override

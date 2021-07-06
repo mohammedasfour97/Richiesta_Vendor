@@ -1,187 +1,259 @@
 package com.richiestavendor.ModelClasses;
 
+import androidx.annotation.NonNull;
+
 public class Branch {
 
-    private String ID, ID_Stores, CPName, ARName, ENName, ARAddress, ENAddress, Longitude, Latitude, ID_Country, ID_City, ID_Region, Tel, ad_state,
-            us_state, Ranking, ID_USER, DateEdite, DateCreate;
+
+    private String NameAR;
+    private String NameEN;
+    private String Feild;
+    private String RK_StoresContact;
+    private String RK_Stores;
+    private String RK_branchNotes;
+    private String CreatedBy;
+    private String CreatedDate;
+    private String ModifiedBy;
+    private String ModifiedDate;
+    private String RK_Branch_ID;
+    private String RK_Address;
+    private String RK_City;
+    private String RK_Country;
+    private String RK_Phone;
+    private String RK_Cell;
+    private String RK_Email;
+    private String RK_StoreNotes;
+    private String Createdby;
+    private String country_name_ar;
+    private String country_name_en;
+    private String city_name_ar;
+    private String city_name_en;
+
+    public String getRKBranchDetails_ID() {
+        return RKBranchDetails_ID;
+    }
+
+    public void setRKBranchDetails_ID(String RKBranchDetails_ID) {
+        this.RKBranchDetails_ID = RKBranchDetails_ID;
+    }
+
+    private String RKBranchDetails_ID;
 
 
     public Branch() {
     }
 
-    public Branch(String ID, String ID_Stores, String CPName, String ARName, String ENName, String ARAddress, String ENAddress, String longitude,
-                  String latitude, String ID_Country, String ID_City, String ID_Region, String tel, String ad_state, String us_state, String ranking,
-                  String ID_USER, String dateEdite, String dateCreate) {
-        this.ID = ID;
-        this.ID_Stores = ID_Stores;
-        this.CPName = CPName;
-        this.ARName = ARName;
-        this.ENName = ENName;
-        this.ARAddress = ARAddress;
-        this.ENAddress = ENAddress;
-        Longitude = longitude;
-        Latitude = latitude;
-        this.ID_Country = ID_Country;
-        this.ID_City = ID_City;
-        this.ID_Region = ID_Region;
-        Tel = tel;
-        this.ad_state = ad_state;
-        this.us_state = us_state;
-        Ranking = ranking;
-        this.ID_USER = ID_USER;
-        DateEdite = dateEdite;
-        DateCreate = dateCreate;
+    public Branch(String nameAR, String nameEN, String feild, String RK_StoresContact, String RK_Stores, String RK_branchNotes, String createdBy,
+                  String createdDate, String modifiedBy, String modifiedDate, String RK_Branch_ID, String RK_Address, String RK_City, String RK_Country,
+                  String RK_Phone, String RK_Cell, String RK_Email, String RK_StoreNotes, String createdby) {
+        NameAR = nameAR;
+        NameEN = nameEN;
+        Feild = feild;
+        this.RK_StoresContact = RK_StoresContact;
+        this.RK_Stores = RK_Stores;
+        this.RK_branchNotes = RK_branchNotes;
+        CreatedBy = createdBy;
+        CreatedDate = createdDate;
+        ModifiedBy = modifiedBy;
+        ModifiedDate = modifiedDate;
+        this.RK_Branch_ID = RK_Branch_ID;
+        this.RK_Address = RK_Address;
+        this.RK_City = RK_City;
+        this.RK_Country = RK_Country;
+        this.RK_Phone = RK_Phone;
+        this.RK_Cell = RK_Cell;
+        this.RK_Email = RK_Email;
+        this.RK_StoreNotes = RK_StoreNotes;
+        Createdby = createdby;
     }
 
-    public String getID() {
-        return ID;
+    public String getNameAR() {
+        return NameAR;
     }
 
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setNameAR(String nameAR) {
+        NameAR = nameAR;
     }
 
-    public String getID_Stores() {
-        return ID_Stores;
+    public String getNameEN() {
+        return NameEN;
     }
 
-    public void setID_Stores(String ID_Stores) {
-        this.ID_Stores = ID_Stores;
+    public void setNameEN(String nameEN) {
+        NameEN = nameEN;
     }
 
-    public String getCPName() {
-        return CPName;
+    public String getFeild() {
+        return Feild;
     }
 
-    public void setCPName(String CPName) {
-        this.CPName = CPName;
+    public void setFeild(String feild) {
+        Feild = feild;
     }
 
-    public String getARName() {
-        return ARName;
+    public String getRK_StoresContact() {
+        return RK_StoresContact;
     }
 
-    public void setARName(String ARName) {
-        this.ARName = ARName;
+    public void setRK_StoresContact(String RK_StoresContact) {
+        this.RK_StoresContact = RK_StoresContact;
     }
 
-    public String getENName() {
-        return ENName;
+    public String getRK_Stores() {
+        return RK_Stores;
     }
 
-    public void setENName(String ENName) {
-        this.ENName = ENName;
+    public void setRK_Stores(String RK_Stores) {
+        this.RK_Stores = RK_Stores;
     }
 
-    public String getARAddress() {
-        return ARAddress;
+    public String getRK_branchNotes() {
+        return RK_branchNotes;
     }
 
-    public void setARAddress(String ARAddress) {
-        this.ARAddress = ARAddress;
+    public void setRK_branchNotes(String RK_branchNotes) {
+        this.RK_branchNotes = RK_branchNotes;
     }
 
-    public String getENAddress() {
-        return ENAddress;
+    public String getCreatedBy() {
+        return CreatedBy;
     }
 
-    public void setENAddress(String ENAddress) {
-        this.ENAddress = ENAddress;
+    public void setCreatedBy(String createdBy) {
+        CreatedBy = createdBy;
     }
 
-    public String getLongitude() {
-        return Longitude;
+    public String getCreatedDate() {
+        return CreatedDate;
     }
 
-    public void setLongitude(String longitude) {
-        Longitude = longitude;
+    public void setCreatedDate(String createdDate) {
+        CreatedDate = createdDate;
     }
 
-    public String getLatitude() {
-        return Latitude;
+    public String getModifiedBy() {
+        return ModifiedBy;
     }
 
-    public void setLatitude(String latitude) {
-        Latitude = latitude;
+    public void setModifiedBy(String modifiedBy) {
+        ModifiedBy = modifiedBy;
     }
 
-    public String getID_Country() {
-        return ID_Country;
+    public String getModifiedDate() {
+        return ModifiedDate;
     }
 
-    public void setID_Country(String ID_Country) {
-        this.ID_Country = ID_Country;
+    public void setModifiedDate(String modifiedDate) {
+        ModifiedDate = modifiedDate;
     }
 
-    public String getID_City() {
-        return ID_City;
+    public String getRK_Branch_ID() {
+        return RK_Branch_ID;
     }
 
-    public void setID_City(String ID_City) {
-        this.ID_City = ID_City;
+    public void setRK_Branch_ID(String RK_Branch_ID) {
+        this.RK_Branch_ID = RK_Branch_ID;
     }
 
-    public String getID_Region() {
-        return ID_Region;
+    public String getRK_Address() {
+        return RK_Address;
     }
 
-    public void setID_Region(String ID_Region) {
-        this.ID_Region = ID_Region;
+    public void setRK_Address(String RK_Address) {
+        this.RK_Address = RK_Address;
     }
 
-    public String getTel() {
-        return Tel;
+    public String getRK_City() {
+        return RK_City;
     }
 
-    public void setTel(String tel) {
-        Tel = tel;
+    public void setRK_City(String RK_City) {
+        this.RK_City = RK_City;
     }
 
-    public String getAd_state() {
-        return ad_state;
+    public String getRK_Country() {
+        return RK_Country;
     }
 
-    public void setAd_state(String ad_state) {
-        this.ad_state = ad_state;
+    public void setRK_Country(String RK_Country) {
+        this.RK_Country = RK_Country;
     }
 
-    public String getUs_state() {
-        return us_state;
+    public String getRK_Phone() {
+        return RK_Phone;
     }
 
-    public void setUs_state(String us_state) {
-        this.us_state = us_state;
+    public void setRK_Phone(String RK_Phone) {
+        this.RK_Phone = RK_Phone;
     }
 
-    public String getRanking() {
-        return Ranking;
+    public String getRK_Cell() {
+        return RK_Cell;
     }
 
-    public void setRanking(String ranking) {
-        Ranking = ranking;
+    public void setRK_Cell(String RK_Cell) {
+        this.RK_Cell = RK_Cell;
     }
 
-    public String getID_USER() {
-        return ID_USER;
+    public String getRK_Email() {
+        return RK_Email;
     }
 
-    public void setID_USER(String ID_USER) {
-        this.ID_USER = ID_USER;
+    public void setRK_Email(String RK_Email) {
+        this.RK_Email = RK_Email;
     }
 
-    public String getDateEdite() {
-        return DateEdite;
+    public String getRK_StoreNotes() {
+        return RK_StoreNotes;
     }
 
-    public void setDateEdite(String dateEdite) {
-        DateEdite = dateEdite;
+    public void setRK_StoreNotes(String RK_StoreNotes) {
+        this.RK_StoreNotes = RK_StoreNotes;
     }
 
-    public String getDateCreate() {
-        return DateCreate;
+    public String getCreatedby() {
+        return Createdby;
     }
 
-    public void setDateCreate(String dateCreate) {
-        DateCreate = dateCreate;
+    public void setCreatedby(String createdby) {
+        Createdby = createdby;
+    }
+
+    public String getCountry_name_ar() {
+        return country_name_ar;
+    }
+
+    public void setCountry_name_ar(String country_name_ar) {
+        this.country_name_ar = country_name_ar;
+    }
+
+    public String getCountry_name_en() {
+        return country_name_en;
+    }
+
+    public void setCountry_name_en(String country_name_en) {
+        this.country_name_en = country_name_en;
+    }
+
+    public String getCity_name_ar() {
+        return city_name_ar;
+    }
+
+    public void setCity_name_ar(String city_name_ar) {
+        this.city_name_ar = city_name_ar;
+    }
+
+    public String getCity_name_en() {
+        return city_name_en;
+    }
+
+    public void setCity_name_en(String city_name_en) {
+        this.city_name_en = city_name_en;
+    }
+
+    @NonNull
+    @Override
+    public String toString() {
+        return  this.getNameAR();
     }
 }

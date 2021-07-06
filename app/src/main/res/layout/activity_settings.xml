@@ -32,15 +32,6 @@
                 android:textSize="@dimen/_15sdp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/tags"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/_10sdp"
-                android:layout_marginLeft="@dimen/_10sdp"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:textSize="@dimen/_8sdp" />
-
 
         </LinearLayout>
 

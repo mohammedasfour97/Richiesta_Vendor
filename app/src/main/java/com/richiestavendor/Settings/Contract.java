@@ -1,6 +1,8 @@
 package com.richiestavendor.Settings;
 
 import com.richiestavendor.ModelClasses.SubSection;
+import com.richiestavendor.RoomDB.StoreDao;
+import com.richiestavendor.Store;
 
 import java.util.HashMap;
 import java.util.List;
@@ -13,20 +15,20 @@ public class Contract {
 
             interface onFinishedListener{
 
-                void onFinished(List<HashMap<String, String>> SubSectionList);
+                void onFinished(List<Store> StoresList);
                 void onFailure(String error);
             }
-            void getSubSections(com.richiestavendor.SubSections.Contract.SubSections.Model.onFinishedListener onFinishedListener, String id, String user_id);
+            void getStoreData(onFinishedListener onFinishedListener);
         }
 
         interface Presenter{
 
-            void requestSubSections(String id, String user_id);
+            void requestStoreData();
         }
 
         interface View{
 
-            void onFinished(List<SubSection> result);
+            void onFinished(Store result);
             void onFailure(String error);
             void onFailure(int error);
 

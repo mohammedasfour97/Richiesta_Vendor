@@ -26,26 +26,9 @@ public class SubSectionsModel implements Contract.SubSections.Model {
 
 
     public ArrayList<HashMap<String, String>> getData(String id , String id_user) {
-        String FName = "GetSubSectionsToStore";
+        String FName = "SelectRK_Categories";
         // Create request
         SoapObject request = new SoapObject(Constants.NAMESPACE, FName);
-
-        PropertyInfo propertyInfo;
-
-        propertyInfo = new PropertyInfo();
-        propertyInfo.name="ID";
-        propertyInfo.type=Double.class;
-        propertyInfo.setValue(id);
-
-        request.addProperty(propertyInfo);
-
-        propertyInfo = new PropertyInfo();
-        propertyInfo.name="ID_USER";
-        propertyInfo.type=Double.class;
-        propertyInfo.setValue(id_user);
-
-        request.addProperty(propertyInfo);
-
 
         /** end send*/
         SoapSerializationEnvelope envelope = new SoapSerializationEnvelope(
@@ -75,7 +58,7 @@ public class SubSectionsModel implements Contract.SubSections.Model {
 
 
 
-            String [] prop = new String[] {"ID", "CPSubSections", "ARSubSections", "ENSubSections", "FRSubSections", "Notes", "Status", "Ranking",
+            String [] prop = new String[] {"RK_Stores", "CategoryNameEN", "CategoryNameAr", "ParentCategory", "CategoryNotes", "Notes", "Status", "Ranking",
                     "ARDescription", "ENDescription", "FRDescription", "ARImage", "ENImage", "FRImage", "ID_Stores", "ID_Branches", "ID_USER",
                     "DateEdite", "DateCreate"
             };

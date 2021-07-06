@@ -7,10 +7,14 @@
         android:id="@+id/add"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Button" />
+        android:layout_margin="@dimen/_5sdp"
+        android:background="@drawable/prim_solid"
+        android:textColor="@color/white"
+        android:text="@string/add_pr" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerview"
         android:layout_width="match_parent"
-        android:layout_height="match_parent" />
+        android:layout_height="match_parent"
+        android:layout_marginBottom="@dimen/_50sdp"/>
 </LinearLayout>

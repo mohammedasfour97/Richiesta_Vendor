@@ -2,7 +2,12 @@ package com.richiestavendor.Products.View;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.content.IntentFilter;
+import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +16,21 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.richiestavendor.Constants;
 import com.richiestavendor.ModelClasses.Product;
 import com.richiestavendor.Products.Contract;
 import com.richiestavendor.Products.Presenter.ProductsPresenter;
 import com.richiestavendor.R;
+import com.richiestavendor.View.ViewDetails;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -62,8 +73,7 @@ public class ProductsFragment  extends Fragment implements Contract.Products.Vie
 
         productsPresenter = new ProductsPresenter(this);
 
-        ShowProgress();
-        productsPresenter.requestProducts(getArguments().getString("id") , getArguments().getString("user_id"));
+        requestProducts();
 
         return view;
 
@@ -81,7 +91,15 @@ public class ProductsFragment  extends Fragment implements Contract.Products.Vie
 
     private void setListeners(View view){
 
+        add.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
 
+                Intent intent = new Intent(getContext() , AddProductActivity.class);
+                intent.putExtra("edit" , "no");
+                startActivity(intent);
+            }
+        });
     }
 
     private void configureRecyclerView(){
@@ -94,14 +112,41 @@ public class ProductsFragment  extends Fragment implements Contract.Products.Vie
         recyclerView.setNestedScrollingEnabled(false);
     }
 
+
+    private void requestProducts(){
+
+        ShowProgress();
+        productsPresenter.requestProducts(getArguments().getString("id") , getArguments().getString("user_id"));
+    }
+
+
+
     @Override
-    public void onFinished(List<Product> result) {
+    public void onFinished(List result) {
 
         productList.clear();
 
         productList.addAll(result);
 
         productsAdapter.notifyDataSetChanged();
+    }
+
+    @Override
+    public void onFinished(String result) {
+        //////////////////
+    }
+
+    @Override
+    public void onFinished(int result) {
+
+        Toast.makeText(getContext(), getResources().getString(result), Toast.LENGTH_SHORT).show();
+
+        requestProducts();
+    }
+
+    @Override
+    public void onAddImgFinished() {
+
     }
 
     @Override
@@ -137,13 +182,16 @@ public class ProductsFragment  extends Fragment implements Contract.Products.Vie
         public class MyViewHolder extends RecyclerView.ViewHolder {
             Context context;
             private TextView title;
-            private ImageView imageView;
+            private ImageView edit , remove , info , logo;
 
 
             public MyViewHolder(View view) {
                 super(view);
                 title = view.findViewById(R.id.title);
-                imageView = view.findViewById(R.id.image);
+                logo = view.findViewById(R.id.imageView);
+                info = view.findViewById(R.id.info);
+                edit = view.findViewById(R.id.edit);
+                remove = view.findViewById(R.id.remove);
                 context = itemView.getContext();
 
 
@@ -169,9 +217,63 @@ public class ProductsFragment  extends Fragment implements Contract.Products.Vie
 
             final Product product = productList.get(position);
 
-            holder.title.setText(product.getARName());
+            holder.title.setText(product.getRKPrdNameAR());
+            Glide.with(holder.context).load(Constants.IMAGE_URL+(product.getProductPic().substring(9))).into(holder.logo);
 
+            holder.itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
 
+                    FragmentManager fm = getActivity().getSupportFragmentManager();
+
+                    ViewDetails b = null;
+                    try {
+                        b = new ViewDetails(Constants.toMap(product));
+                    } catch (Exception e) {
+                        e.printStackTrace();
+                    }
+                    b.show(fm, "fragment_new_activity");
+
+                }
+            });
+
+            holder.remove.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    AlertDialog.Builder builder = new AlertDialog.Builder(getContext() , R.style.MyAlertDialogStyle);
+                    builder.setMessage(getResources().getString(R.string.sure_delete_pro));
+                    builder.setCancelable(false);
+                    builder.setPositiveButton(R.string.yes, new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            ShowProgress();
+                            productsPresenter.getrequestDeleteProducts(product.getId());
+                        }
+                    });
+                    builder.setNegativeButton(getResources().getString(R.string.no), new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+
+                            dialog.dismiss();
+                        }
+                    });
+                    builder.show();
+
+                }
+            });
+
+            holder.edit.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(getContext() , AddProductActivity.class);
+                    intent.putExtra("edit" , "yes");
+                    intent.putExtra("p" , product);
+                    startActivity(intent);
+                }
+            });
         }
 
         @Override
